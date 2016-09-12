@@ -1,0 +1,11 @@
+*.DS_Store
+*.log
+node_modules
+test/reports
+*~
+cov-*
+coverage
+.idea
+.DS_Store
+.vscode
+typings
