@@ -44,7 +44,25 @@ router.get('/', function(req, res) {
     res.json({ message: 'YEAH! Seja Bem-Vindo a nossa API' });
 });
 
-/* TODO - Definir futuras rotas aqui!!! */
+// Rotas que irão terminar em '/usuarios' - (servem tanto para: GET All & POST)
+router.route('/usuarios')
+
+    /* 1) Método: Criar Usuario (acessar em: POST http://localhost:8080/api/usuarios */
+    .post(function(req, res) {
+        var usuario = new Usuario();
+
+        //aqui setamos os campos do usuario (que virá do request)
+        usuario.nome = req.body.nome;
+        usuario.login = req.body.login;
+        usuario.senha = req.body.senha;
+
+        usuario.save(function(error) {
+            if(error)
+                res.send(error);
+                        
+            res.json({ message: 'Usuário criado!' });
+        });
+    });
 
 
 /* Todas as nossas rotas serão prefixadas com '/api' */
