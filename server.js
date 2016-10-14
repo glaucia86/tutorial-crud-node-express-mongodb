@@ -13,6 +13,9 @@
 var express     = require('express'); //chamando o pacote express
 var app         = express(); //definção da nossa aplicação através do express
 var bodyParser  = require('body-parser');  //chamando o pacote body-parser
+var mongoose    = require('mongoose'); 
+
+mongoose.connect('mongodb://root:123456@jello.modulusmongo.net:27017/ity3Ryje');
 
 /** Configuração da variável 'app' para usar o 'bodyParser()'.
  * Ao fazermos isso nos permitirá retornar os dados a partir de um POST
