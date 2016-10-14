@@ -13,7 +13,8 @@
 var express     = require('express'); //chamando o pacote express
 var app         = express(); //definção da nossa aplicação através do express
 var bodyParser  = require('body-parser');  //chamando o pacote body-parser
-var mongoose    = require('mongoose'); 
+var mongoose    = require('mongoose');
+var Usuario     = require('./app/models/usuario');
 
 mongoose.connect('mongodb://root:123456@jello.modulusmongo.net:27017/ity3Ryje');
 
