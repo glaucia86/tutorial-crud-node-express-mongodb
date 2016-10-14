@@ -16,7 +16,8 @@ var bodyParser  = require('body-parser');  //chamando o pacote body-parser
 var mongoose    = require('mongoose');
 var Usuario     = require('./app/models/usuario');
 
-mongoose.connect('mongodb://root:123456@jello.modulusmongo.net:27017/ity3Ryje');
+mongoose.connect('mongodb://root:123456@jello.modulusmongo.net:27017/ity3Ryje'); //via Modulus
+//mongoose.connect('mongodb://localhost/node-api'); //aqui caso queira executar de maneira local usando o MongoDb
 
 /** Configuração da variável 'app' para usar o 'bodyParser()'.
  * Ao fazermos isso nos permitirá retornar os dados a partir de um POST
