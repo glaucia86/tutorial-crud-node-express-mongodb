@@ -25,13 +25,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /** Definição da porta onde será executada a nossa aplicação */
-var port = process.env.PORT || 8000; 
+var port = process.env.PORT || 8000;
 
 //Rotas da nossa API: 
 //==============================================================
 
 /* Aqui o 'router' irá pegar as instâncias das Rotas do Express */
-var router  = express.Router(); 
+var router = express.Router();
+
+/* Middleware para usar em todos os requests enviados para a nossa API- Mensagem Padrão */
+router.use(function(req, res, next) {
+    console.log('Algo está acontecendo aqui........');
+    next(); //aqui é para sinalizar de que prosseguiremos para a próxima rota. E que não irá parar por aqui!!!
+});
 
 /* Rota de Teste para sabermos se tudo está realmente funcionando (acessar através: GET: http://localhost:8000/api) */
 router.get('/', function(req, res) {
