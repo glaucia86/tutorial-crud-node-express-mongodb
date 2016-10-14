@@ -95,14 +95,14 @@ router.route('/usuarios/:usuario_id')
     .put(function(req, res) {
 
         //Primeiro: Para atualizarmos, precisamos primeiro achar o Usuario. Para isso, vamos selecionar por id:
-        Usuario.findById(req.params.usuario_id, function(usuario) {
+        Usuario.findById(req.params.usuario_id, function(error, usuario) {
             if(error) 
                 res.send(error);
             
             //Segundo: Diferente do Selecionar Por Id... a resposta será a atribuição do que encontramos na classe modelo:
             usuario.nome = req.body.nome;
             usuario.login = req.body.login;
-            ususario.senha = req.body.senha;
+            usuario.senha = req.body.senha;
 
             //Terceiro: Agora que já atualizamos os campos, precisamos salvar essa alteração....
             usuario.save(function(error) {
@@ -111,6 +111,20 @@ router.route('/usuarios/:usuario_id')
 
                 res.json({ message: 'Usuário Atualizado!' });
             });
+        });
+    })
+
+    /* 5) Método: Excluir (acessar em: http://localhost:8080/api/usuarios/:usuario_id) */
+    .delete(function(req, res) {
+
+        //Função para excluir os dados e também verificar se há algum erro no momento da exclusão:
+        Usuario.remove({
+        _id: req.params.usuario_id
+        }, function(error) {
+            if(error)
+                res.send(error);
+
+            res.json({ message: 'Usuário excluído com Sucesso! '});
         });
     });
 
