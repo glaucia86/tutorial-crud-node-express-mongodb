@@ -76,6 +76,21 @@ router.route('/usuarios')
         });
     });
 
+// Rotas que irão terminar em '/usuarios/:usuario_id' - (servem tanto para GET by Id, PUT, & DELETE)
+router.route('/usuarios/:usuario_id')
+
+    /* 3) Método: Selecionar Por Id (acessar em: GET http://localhost:8080/api/usuarios/:usuario_id) */
+    .get(function(req, res) {
+
+        //Função para Selecionar Por Id e verificar se há algum erro:
+        Usuario.findById(req.params.usuario_id, function(error, usuario) {
+            if(error) 
+                res.send(error);
+
+            res.json(usuario);
+        });
+    });
+
 /* Todas as nossas rotas serão prefixadas com '/api' */
 app.use('/api', router);
 
