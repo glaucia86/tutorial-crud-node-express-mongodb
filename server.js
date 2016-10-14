@@ -62,8 +62,19 @@ router.route('/usuarios')
                         
             res.json({ message: 'Usuário criado!' });
         });
-    });
+    })
 
+    /* 2) Método: Selecionar Todos (acessar em: GET http://locahost:8080/api/usuarios) */
+    .get(function(req, res) {
+
+        //Função para Selecionar Todos os 'usuarios' e verificar se há algum erro:
+        Usuario.find(function(err, usuarios) {
+            if(err)
+                res.send(err);
+
+            res.json(usuarios);
+        });
+    });
 
 /* Todas as nossas rotas serão prefixadas com '/api' */
 app.use('/api', router);
